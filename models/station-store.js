@@ -39,7 +39,7 @@ const stationStore = {
     this.stationCollection.push(station);
   },
   getCodeForValue(code) {
-    //console.log(code);
+    
 
     let newCode;
     switch (code) {
@@ -67,15 +67,12 @@ const stationStore = {
       case "800":
         newCode = "Thunder";
         break;
-
     }
-    // console.log(newCode);
-
+    
     return newCode;
   },
 
   getTempValue(temp) {
-    //console.log(temp);
     return temp * 9 / 5 + 32;
   },
   getTemp(temp) {
