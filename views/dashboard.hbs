@@ -1,0 +1,122 @@
+{{> menu id="dashboard"}}
+
+{{#each stations}}
+  <section class="ui segment">
+    <h2 class="ui header">
+      {{name}}
+    </h2>
+    <table class="ui celled table">
+      <thead>
+      <tr>
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Pressure</th>
+      </tr>
+      </thead>
+      <tbody>
+      <div class="ui five column grid">
+        <div class="column">
+          <div class="ui inverted cards">
+            <div class="card">
+              <div class="content">
+                <br>
+                <div class="header">{{name}}</div>
+                <div class="description">
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui inverted cards">
+            <div class="card">
+              <div class="content">
+                <div class="header"> Weather </div>
+                <div class="description">
+                  <div>
+                    {{readingsToReturn.codeString}}
+                    <br>
+                    <br>
+                    <br>
+                  </div>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui inverted cards">
+            <div class="card">
+              <div class="content">
+                <div class="header">Temp</div>
+                <div class="description">
+                  {{readingsToReturn.tempCelsius}}C
+                    <br>
+                  {{readingsToReturn.tempText}}F
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui inverted cards">
+            <div class="card">
+              <div class="content">
+                <div class="header">Wind</div>
+                <div class="description">
+                    {{readingsToReturn.windForce}} bft
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui inverted cards">
+            <div class="card">
+              <div class="content">
+                <div class="header">Pressure</div>
+                <div class="description">
+                    {{readingsToReturn.lastPressure}}hpa
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#each readings}}
+        <tr>
+          <td>
+            {{code}}
+          </td>
+          <td>
+            {{temp}}
+          </td>
+          <td>
+            {{windspeed}}
+          </td>
+          <td>
+            {{pressure}}
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+{{/each}}
+
+    
