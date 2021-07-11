@@ -1,0 +1,87 @@
+{{#each stations}}
+
+  <section class="ui stacked segment">
+    <h2 class="ui header">
+      {{name}}
+    </h2>
+    <div class="ui five column grid">
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            {{#each readings}}
+            <div class="header">{{name}}</div>
+            {{/each}}
+            <div class="description">
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header"> Code </div>
+            <div class="description">
+              {{#each readings}}
+              {{code}}
+              {{/each}}
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Temp</div>
+            <div class="description">
+               {{#each readings}}
+              {{temp}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Wind</div>
+            <div class="description">
+             {{#each readings}}
+              {{windspeed}}
+              {{/each}}
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Pressure</div>
+            <div class="description">
+              {{#each readings}}
+              {{pressure}}hp
+              {{/each}}
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+{{/each}}
