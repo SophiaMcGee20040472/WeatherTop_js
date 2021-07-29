@@ -2,129 +2,164 @@
 
 <section class="ui segment">
   <h2 class="ui purple header">
-     WeatherTop Station
+    WeatherTop Station
   </h2>
-    <div class="ui five column grid">
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">{{station.name}} Station</div>
-              <div class="description">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
+  <div class="ui five column grid">
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">{{station.name}} <i class="right floated big purple map marker icon"></i>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header"> Weather </div>
-              <div class="description">
-                {{#each station}}
-                  {{codeString}}
-                {{/each}}
+            <div class="description">
+              <div>
+                Lat : {{station.lat}}
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                Lng : {{station.lng}}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">Temp</div>
-              <div class="description">
-                {{#each station}}
-                  {{tempCelsius}}
-                {{/each}} C
-                <br>
-                {{#each station}}
-                  {{tempText}}
-                {{/each}}F
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">Wind</div>
-              <div class="description">
-                {{#each station}}
-                  {{windForce}}
-                {{/each}}bft
-                <br>
-                {{#each station}}
-                  {{windDirectionString}}
-                {{/each}}
-                <br>
-                Feels like
-                <br>
-                {{#each station}}
-                  {{windChillString}}
-                {{/each}}
-                <br>
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">Pressure</div>
-              <div class="description">
-                {{#each station}}
-                  {{lastPressure}}
-                {{/each}}hpa
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
+              <br>
+              <br>
+              <br>
+              <br>
             </div>
           </div>
         </div>
       </div>
     </div>
-    {{#each readings}}
-      <tr>
-        <td>
-          {{code}}
-        </td>
-        <td>
-          {{temp}}
-        </td>
-        <td>
-          {{windspeed}}
-        </td>
-        <td>
-          {{pressure}}
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header"> Weather
+
+              <i class='{{#checkCode station.readingsToReturn.code}}{{/checkCode}}'></i>
+            </div>
+            <div class="description">
+              {{#each station}}
+                {{codeString}}
+              {{/each}}
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Temp <i class="right floated temperature big blue low icon"></i></div>
+            <div class="description">
+              {{#each station}}
+                {{tempCelsius}}
+              {{/each}} C
+              <br>
+              {{#each station}}
+                {{tempText}}
+              {{/each}}F
+              <br>
+              Max :
+              {{#each station}}
+                {{MaxTemp}}
+              {{/each}}C
+              <br>
+              Min :
+              {{#each station}}
+                {{MinTemp}}
+              {{/each}}C
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Wind <i class="right floated wind big green icon"></i></div>
+            <div class="description">
+              {{#each station}}
+                {{windForce}}
+              {{/each}}bft
+              <br>
+              {{#each station}}
+                {{windDirectionString}}
+              {{/each}}
+              <br>
+              Feels like
+              <br>
+              {{#each station}}
+                {{windChillString}}
+              {{/each}}
+              <br> Max :
+              {{#each station}}
+                {{windMax}}
+              {{/each}}
+              <br>
+              Min :
+              {{#each station}}
+                {{windMin}}
+              {{/each}}
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Pressure <i class="right floated big dark orange sun outline icon"></i></div>
+            <div class="description">
+              {{#each station}}
+                {{lastPressure}}
+              {{/each}}hpa
+              <br>
+              Max :
+              {{#each station}}
+                {{pressureMax}}
+              {{/each}}
+              <br>
+              Min :
+              {{#each station}}
+                {{pressureMin}}
+              {{/each}}
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#each readings}}
+    <tr>
+      <td>
+        {{code}}
+      </td>
+      <td>
+        {{temp}}
+      </td>
+      <td>
+        {{windspeed}}
+      </td>
+      <td>
+        {{pressure}}
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
   </table>
   {{> listreadings}}
   {{> addreading}}

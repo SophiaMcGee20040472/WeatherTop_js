@@ -1,27 +1,69 @@
-'use strict';
+"use strict";
 
-const logger = require('../utils/logger');
-const stationStore = require('../models/station-store');
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 
-const station = {
+class JsonStore {
+  constructor(file, defaults) {
+    const adapter = new FileSync(file);
+    this.db = low(adapter);
+    this.db.defaults(defaults).value();
+  }
 
-  index(request, response) {
-    const stationId = request.params.id;
-    logger.debug('Station id = ', stationId);
-    const viewData = {
-      title: 'Station',
-      station: stationStore.getStation(stationId),
-    };
-    response.render('station', viewData);
-  },
+  save() {
+    this.db.write();
+  }
 
-  deleteReading(request, response) {
-    const stationId = request.params.id;
-    const readingId = request.params.readingid;
-    logger.debug(`Deleting Reading ${readingId} from Station ${stationId}`);
-    stationStore.removeReading(stationId, readingId);
-    response.redirect('/station/' + stationId);
-  },
-};
+  add(collection, obj) {
+    this.db
+      .get(collection)
+      .push(obj)
+      .last()
+      .value();
+  }
 
-module.exports = station;
+  remove(collection, obj) {
+    this.db
+      .get(collection)
+      .remove(obj)
+      .value();
+  }
+
+  removeAll(collection) {
+    this.db
+      .get(collection)
+      .remove()
+      .value();
+  }
+
+  findAll(collection) {
+    return this.db.get(collection).value();
+  }
+
+  findOneBy(collection, filter) {
+    const results = this.db
+      .get(collection)
+      .filter(filter)
+      .value();
+    return results[0];
+  }
+
+  findByIds(collection, ids) {
+    return this.db
+      .get(collection)
+      .keyBy("id")
+      .at(ids)
+      .value();
+  }
+
+  findBy(collection, filter) {
+    return this.db
+      .get(collection)
+      .filter(filter)
+      .value();
+  }
+}
+
+module.exports = JsonStore;
+
+
