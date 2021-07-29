@@ -16,10 +16,51 @@ app.engine(
   ".hbs",
   exphbs({
     extname: ".hbs",
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+      checkCode: function(codeV) {
+        console.log(codeV)
+        if(codeV === '100'){
+          return "right floated big red sun icon"
+        }
+        else if(codeV === '200'){
+          return "right floated big yellow cloud sun icon"
+        }
+        else if(codeV === '300'){
+          return "right floated big white cloud icon"
+        }
+        else if(codeV === '400'){
+          return "right floated big yellow sun rain cloud icon"
+        }
+        else if(codeV === '500'){
+          return "right floated big blue cloud showers heavy icon"
+        }
+        else if(codeV === '600'){
+          return "right floated big pink umbrella icon"
+        }
+        else if(codeV === '700'){
+          return "right floated big grey rain cloud icon"
+        }
+        else if(codeV === '800'){
+          return "right floated big yellow bolt icon"
+        }
+        else {
+          return "right floated big yellow bolt icon"
+        }
+      }
+    }
   })
 );
-app.set("view engine", ".hbs");
+
+app.set("view engine", "hbs");
+
+const hbs = require('hbs');
+hbs.registerHelper('checkCode', function(codeValue, codeString){
+  if(codeString === codeString){
+    return true
+  }
+return false
+});
 
 const routes = require("./routes");
 app.use("/", routes);

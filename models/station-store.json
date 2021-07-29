@@ -2,7 +2,10 @@
   "stationCollection": [
     {
       "id": "01",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "name": "Tramore",
+      "lat": "52.160",
+      "lng": "-7.152",
       "readings": [
         {
           "id": "02",
@@ -10,6 +13,7 @@
           "temp": "0.5",
           "windspeed": "3.5",
           "pressure": "1002",
+          "date": "2021-04-25 07:20:42.138",
           "windDirection": "90"
         },
         {
@@ -18,7 +22,8 @@
           "temp": "6",
           "windspeed": "2",
           "pressure": "1004",
-          "windDirection":"96"
+          "date": "2021-05-25 07:20:42.138",
+          "windDirection": "96"
         },
         {
           "id": "04",
@@ -26,13 +31,17 @@
           "temp": "8",
           "windspeed": "1",
           "pressure": "1005",
-          "windDirection":"101"
+          "date": "2021-06-25 07:20:42.138",
+          "windDirection": "101"
         }
       ]
     },
     {
       "id": "05",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "name": "Dunmore",
+      "lat": "52.149",
+      "lng": "-6.994",
       "readings": [
         {
           "id": "06",
@@ -40,7 +49,8 @@
           "temp": "8",
           "windspeed": "1",
           "pressure": "999",
-          "windDirection":"98"
+          "date": "2021-02-25 07:20:42.138",
+          "windDirection": "98"
         },
         {
           "id": "07",
@@ -48,9 +58,67 @@
           "temp": "0.5",
           "windspeed": "3.5",
           "pressure": "1000",
-          "windDirection":"102"
+          "date": "2021-03-25 07:20:42.138",
+          "windDirection": "102"
         }
-      ]
+      ],
+      "readingsToReturn": {
+        "windMin": 1,
+        "windMax": 3.5,
+        "pressureMin": 999,
+        "pressureMax": 1000,
+        "MinTemp": 0.5,
+        "MaxTemp": 8,
+        "windChillString": "-0.2",
+        "windDirectionString": "East South East",
+        "tempCelsius": "0.5",
+        "tempText": 32.9,
+        "windForce": 1,
+        "lastPressure": "1000",
+        "codeString": "Thunder",
+        "code": "800"
+      }
+    },
+    {
+      "id": "e8d0e950-f074-11eb-9303-eb6134eea600",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "name": "SpringField",
+      "lat": "500",
+      "lng": "400",
+      "readings": [
+        {
+          "id": "f4422420-f074-11eb-9303-eb6134eea600",
+          "code": "500",
+          "temp": "40",
+          "windspeed": "200",
+          "windDirection": "40",
+          "pressure": "6"
+        },
+        {
+          "id": "14ae4fe0-f075-11eb-9303-eb6134eea600",
+          "code": "200",
+          "temp": "40",
+          "windspeed": "20",
+          "windDirection": "400",
+          "pressure": "6"
+        }
+      ],
+      "readingsToReturn": {
+        "windMin": 20,
+        "windMax": 200,
+        "pressureMin": 6,
+        "pressureMax": 300,
+        "MinTemp": 40,
+        "MaxTemp": 40,
+        "windChillString": "45.2",
+        "windDirectionString": "North",
+        "tempCelsius": "40",
+        "tempText": 104,
+        "windForce": 4,
+        "lastPressure": "6",
+        "codeString": "Partial Clouds",
+        "code": "200"
+      }
     }
   ]
 }

@@ -1,45 +1,55 @@
 "use strict";
 
 const _ = require("lodash");
-
+const JsonStore = require("./json-store");
 
 const stationStore = {
-
-  stationCollection: require("./station-store.json").stationCollection,
+  store: new JsonStore("./models/station-store.json", {
+    stationCollection: [],
+  }),
+  collection: "stationCollection",
 
   getAllStations() {
-    return this.stationCollection;
+    return this.store.findAll(this.collection);
+  },
+
+  addStation(newStation) {
+    this.store.add(this.collection, newStation);
+    this.store.save();
   },
 
   getStation(id) {
-    let foundStation = null;
-    for (let station of this.stationCollection) {
-      if (id == station.id) {
-        foundStation = station;
-      }
-    }
-
-    return foundStation;
+    return this.store.findOneBy(this.collection, { id: id });
   },
 
-  removeStation(id) {
-    _.remove(this.stationCollection, { id: id });
+  getReading(id) {
+    return this.store.findOneBy(this.collection, { id: id });
   },
 
   addReading(id, reading) {
-    const station = this.getStation(id);
+    const station = this.getReading(id);
     station.readings.push(reading);
   },
+
+  removeStation(id) {
+    const readings = this.getStation(id);
+    this.store.remove(this.collection, readings);
+    this.store.save();
+  },
+
   removeReading(id, readingId) {
     const station = this.getStation(id);
-    _.remove(station.readings, { id: readingId });
+    const readings = station.readings;
+    _.remove(readings, { id: readingId });
+    this.store.save();
 
   },
-  addStation(station) {
-    this.stationCollection.push(station);
+
+  getUserStations(userid) {
+    return this.store.findBy(this.collection, { userid: userid });
   },
+
   getCodeForValue(code) {
-    
 
     let newCode;
     switch (code) {
@@ -67,8 +77,8 @@ const stationStore = {
       case "800":
         newCode = "Thunder";
         break;
+
     }
-    
     return newCode;
   },
 
@@ -115,8 +125,16 @@ const stationStore = {
 
   getWindChill(temp,windspeed) {
      let chill = 13.12 + 0.6215 * temp - 11.37 * (Math.pow(windspeed, 0.16)) + 0.3965 * temp* (Math.pow(windspeed, 0.16))
-     var chilly = chill.toFixed(2);
+     var chilly = chill.toFixed(1);
     return chilly;
+  },
+
+  getMinValues(listvalues){
+    return Math.min.apply(Math, listvalues)
+  },
+  getMaxValues(listvalues){
+    return Math.max.apply(Math, listvalues)
+
   },
 
   getCompassDirection(windDirection) {
@@ -155,7 +173,6 @@ const stationStore = {
     }
   },
 
-
   getStationIdData(stationId) {
 
     let station = stationStore.getStation(stationId);
@@ -163,19 +180,33 @@ const stationStore = {
 
       let lastReadings = station.readings[station.readings.length - 1];
 
-      lastReadings.windChillString = this.getWindChill(lastReadings.temp,lastReadings.windspeed);
-      lastReadings.windDirectionString = this.getCompassDirection(lastReadings.windDirection);
-      lastReadings.tempCelsius = this.getTemp(lastReadings.temp);
-      lastReadings.tempText = this.getTempValue(lastReadings.temp);
-      lastReadings.windForce = this.getBeaufort(lastReadings.windspeed);
-      lastReadings.lastPressure = this.getLastPressure(lastReadings.pressure);
+      let stats ={}
+      let pressures = station.readings.map(item => { return item.pressure})
+      let winds = station.readings.map(item => { return item.windspeed})
+      let temperature = station.readings.map(item => { return item.temp})
+
+      stats.windMin = this.getMinValues(winds);
+      stats.windMax = this.getMaxValues(winds);
+      stats.pressureMin = this.getMinValues(pressures);
+      stats.pressureMax = this.getMaxValues(pressures);
+      stats.MinTemp = this.getMinValues(temperature);
+      stats.MaxTemp = this.getMaxValues(temperature);
+
+      stats.windChillString = this.getWindChill(lastReadings.temp,lastReadings.windspeed);
+      stats.windDirectionString = this.getCompassDirection(lastReadings.windDirection);
+      stats.tempCelsius = this.getTemp(lastReadings.temp);
+      stats.tempText = this.getTempValue(lastReadings.temp);
+      stats.windForce = this.getBeaufort(lastReadings.windspeed);
+      stats.lastPressure = this.getLastPressure(lastReadings.pressure);
       //this taking the number of code and using a case/switch statement will return text value.
-      lastReadings.codeString = this.getCodeForValue(lastReadings.code);
-      station.readingsToReturn = lastReadings;
+      stats.codeString = this.getCodeForValue(lastReadings.code);
+      stats.code = lastReadings.code
+      station.readingsToReturn = stats;
     }
+
+    console.log(station)
     return station;
   }
-
 
 };
 

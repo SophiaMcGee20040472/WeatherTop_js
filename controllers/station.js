@@ -4,6 +4,15 @@ const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
 const uuid = require('uuid');
 
+const hbs = require('hbs');
+hbs.registerHelper('checkCode', function(codeValue, codeString){
+  if(codeString === codeString){
+    return true
+  }
+  return false
+});
+
+
 const station = {
   index(request, response) {
     const stationId = request.params.id;
@@ -11,9 +20,12 @@ const station = {
     const viewData = {
       title: 'Station',
       station: stationStore.getStationIdData(stationId),
+
     };
+
     response.render("station", viewData);
   },
+
   deleteReading(request, response) {
     const stationId = request.params.id;
     const readingId = request.params.readingid;
@@ -35,6 +47,7 @@ const station = {
       pressure: request.body.pressure,
 
     };
+    logger.debug("New Reading = ", newReading);
     stationStore.addReading(stationId, newReading);
     response.redirect('/station/' + stationId);
   },

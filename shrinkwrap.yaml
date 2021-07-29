@@ -5,6 +5,7 @@ dependencies:
   express-fileupload: 1.2.1
   express-handlebars: 5.3.2
   fs-extra: 10.0.0
+  hbs: 4.1.2
   lodash: 4.17.21
   lowdb: 1.0.0
   uuid: 8.3.2
@@ -290,6 +291,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
+  /foreachasync/3.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-VQKYfchxS+M5IJfzLgBxyd7gfPY=
   /forwarded/0.2.0:
     dev: false
     engines:
@@ -345,6 +350,16 @@ packages:
       uglify-js: 3.13.9
     resolution:
       integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
+  /hbs/4.1.2:
+    dependencies:
+      handlebars: 4.7.7
+      walk: 2.3.14
+    dev: false
+    engines:
+      node: '>= 0.8'
+      npm: 1.2.8000 || >= 1.4.16
+    resolution:
+      integrity: sha512-WfBnQbozbdiTLjJu6P6Wturgvy0FN8xtRmIjmP0ebX9OGQrt+2S6UC7xX0IebHTCS1sXe20zfTzQ7yhjrEvrfQ==
   /http-errors/1.7.2:
     dependencies:
       depd: 1.1.2
@@ -787,6 +802,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+  /walk/2.3.14:
+    dependencies:
+      foreachasync: 3.0.0
+    dev: false
+    resolution:
+      integrity: sha512-5skcWAUmySj6hkBdH6B6+3ddMjVQYH5Qy9QGbPmN8kVmLteXk+yVXg+yfk1nbX30EYakahLrr8iPcCxJQSCBeg==
   /winston-transport/4.4.0:
     dependencies:
       readable-stream: 2.3.7
@@ -830,6 +851,7 @@ specifiers:
   express-fileupload: ^1.2.1
   express-handlebars: ^5.3.2
   fs-extra: ^10.0.0
+  hbs: ^4.1.2
   lodash: ^4.17.21
   lowdb: ^1.0.0
   prettier: ^2.3.0

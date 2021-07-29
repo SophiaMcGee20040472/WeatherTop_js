@@ -7,11 +7,10 @@
   <div class="right menu">
     <a id="dashboard" class="item" href="/dashboard"> Dashboard  </a>
     <a id="about" class="item" href="/about"> About </a>
-    <div class="ui dropdown item">
-      <i class="user icon"></i>
-      <div class="menu">
-        <a class="item" href="/logout">Logout</a>
-      </div>
-    </div>
+    <a id="logout" class="item" href="/logout"> Logout </a>
   </div>
 </nav>
+
+<script>
+  $("#{{id}}").addClass("active item");
+</script>
