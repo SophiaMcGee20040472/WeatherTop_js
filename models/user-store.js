@@ -18,11 +18,21 @@ const userStore = {
 
   getUserById(id) {
     return this.store.findOneBy(this.collection, { id: id });
+
   },
 
   getUserByEmail(email) {
     return this.store.findOneBy(this.collection, { email: email });
+  },
+
+  updateUser(user, updateUser) {
+    user.firstName = updateUser.firstName;
+    user.lastName = updateUser.lastName;
+    user.email = updateUser.email;
+    user.password = updateUser.password;
+    this.store.save();
   }
+
 
 };
 

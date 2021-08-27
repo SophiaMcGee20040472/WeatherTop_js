@@ -1,10 +1,119 @@
-{{> menu id="dashboard"}}
+{{> menu id ="dashboard"}}
 
+<br>
 {{#each station}}
-  <section class="ui segment">
-    <h2 class="ui header">
-      {{name}}
-    </h2>
+  <section class="ui inverted grey segment">
+    <h2><i>{{name}} Station</i></h2>
+    <div class="ui five column grid">
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">{{name}} <i class="right floated big purple map marker icon"></i>
+              </div>
+              <div class="description">
+                <div>
+                  Lat : {{lat}}
+                  <br>
+                  Lng : {{lng}}
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header"> Weather
+                <i class='{{#checkCode stats.codeIcon}}{{/checkCode}}'></i>
+              </div>
+              <div class="description">
+                {{stats.code}}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">Temp <i class="right floated temperature big blue low icon"></i></div>
+              <div class="description">
+                {{stats.temp}} C
+                <br>
+                {{stats.tempVal}} F
+                <br>
+                Max :
+                {{stats.maxTemp}} C
+                <br>
+                Min :
+                {{stats.minTemp}}
+                 C
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">Wind <i class="right floated wind big green icon"></i></div>
+              <div class="description">
+                {{stats.beaufort}} bft
+                <br>
+                {{stats.windDirection}}
+                <br>
+                Feels like
+                <br>
+                {{stats.windspeed}}
+                <br> Max :{{stats.maxWind}}
+                <br>
+                Min : {{stats.minWind}}
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">Pressure <i class="right floated big dark orange sun outline icon"></i></div>
+              <div class="description">
+                {{stats.pressure}} hpa
+                <br>
+                Max : {{stats.maxPressure}} hpa
+                <br>
+                Min : {{stats.minPressure}} hpa
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
     <a href="/station/{{id}}" class="ui green icon button">
       <i class="icon folder open"></i>
     </a>
@@ -14,3 +123,4 @@
   </section>
 {{/each}}
 {{> addstation}}
+

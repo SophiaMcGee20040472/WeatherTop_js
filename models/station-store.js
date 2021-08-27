@@ -5,9 +5,11 @@ const JsonStore = require("./json-store");
 
 const stationStore = {
   store: new JsonStore("./models/station-store.json", {
-    stationCollection: [],
+    stationCollection: []
+
   }),
   collection: "stationCollection",
+
 
   getAllStations() {
     return this.store.findAll(this.collection);
@@ -72,7 +74,7 @@ const stationStore = {
         newCode = "Rain";
         break;
       case "700":
-        newCode = "Rain";
+        newCode = "Snow";
         break;
       case "800":
         newCode = "Thunder";
@@ -123,18 +125,17 @@ const stationStore = {
     return pressure;
   },
 
-  getWindChill(temp,windspeed) {
-     let chill = 13.12 + 0.6215 * temp - 11.37 * (Math.pow(windspeed, 0.16)) + 0.3965 * temp* (Math.pow(windspeed, 0.16))
-     var chilly = chill.toFixed(1);
+  getWindChill(temp, windspeed) {
+    let chill = 13.12 + 0.6215 * temp - 11.37 * (Math.pow(windspeed, 0.16)) + 0.3965 * temp * (Math.pow(windspeed, 0.16));
+    var chilly = chill.toFixed(1);
     return chilly;
   },
 
-  getMinValues(listvalues){
-    return Math.min.apply(Math, listvalues)
+  getMinValues(listvalues) {
+    return Math.min.apply(Math, listvalues);
   },
-  getMaxValues(listvalues){
-    return Math.max.apply(Math, listvalues)
-
+  getMaxValues(listvalues) {
+    return Math.max.apply(Math, listvalues);
   },
 
   getCompassDirection(windDirection) {
@@ -173,6 +174,74 @@ const stationStore = {
     }
   },
 
+  getWindTrend(readings) {
+    let windTrend = "";
+
+    if (readings.length >= 3) {
+
+      let firstTrend = readings[readings.length - 1].windspeed;
+      let secondTrend = readings[readings.length - 2].windspeed;
+      let thirdTrend = readings[readings.length - 3].windspeed;
+
+      if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)) {
+        windTrend = "arrow up";
+
+      } else if ((thirdTrend > secondTrend) && (secondTrend < thirdTrend)) {
+        windTrend = "arrow down";
+
+      } else {
+        windTrend = "Steady";
+      }
+      return windTrend;
+    }
+
+  },
+
+  getTempTrend(readings) {
+    let tempTrend = "";
+
+    if (readings.length >= 3) {
+
+      let firstTrend = readings[readings.length - 1].temp;
+      let secondTrend = readings[readings.length - 2].temp;
+      let thirdTrend = readings[readings.length - 3].temp;
+
+      if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)) {
+        tempTrend = "arrow up";
+
+      } else if ((thirdTrend > secondTrend) && (secondTrend < thirdTrend)) {
+        tempTrend = "arrow down";
+
+      } else {
+        tempTrend = "Steady";
+      }
+      return tempTrend;
+    }
+
+  },
+  getPressureTrend(readings) {
+    let pressureTrend = "";
+
+    if (readings.length >= 3) {
+
+      let firstTrend = readings[readings.length - 1].temp;
+      let secondTrend = readings[readings.length - 2].temp;
+      let thirdTrend = readings[readings.length - 3].temp;
+
+      if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)) {
+        pressureTrend = "arrow up";
+
+      } else if ((thirdTrend > secondTrend) && (secondTrend < thirdTrend)) {
+        pressureTrend = "arrow down";
+
+      } else {
+        pressureTrend = "Steady";
+      }
+      return pressureTrend;
+    }
+
+  },
+
   getStationIdData(stationId) {
 
     let station = stationStore.getStation(stationId);
@@ -180,10 +249,16 @@ const stationStore = {
 
       let lastReadings = station.readings[station.readings.length - 1];
 
-      let stats ={}
-      let pressures = station.readings.map(item => { return item.pressure})
-      let winds = station.readings.map(item => { return item.windspeed})
-      let temperature = station.readings.map(item => { return item.temp})
+      let stats = {};
+      let pressures = station.readings.map(item => {
+        return item.pressure;
+      });
+      let winds = station.readings.map(item => {
+        return item.windspeed;
+      });
+      let temperature = station.readings.map(item => {
+        return item.temp;
+      });
 
       stats.windMin = this.getMinValues(winds);
       stats.windMax = this.getMaxValues(winds);
@@ -192,7 +267,11 @@ const stationStore = {
       stats.MinTemp = this.getMinValues(temperature);
       stats.MaxTemp = this.getMaxValues(temperature);
 
-      stats.windChillString = this.getWindChill(lastReadings.temp,lastReadings.windspeed);
+      stats.windTrends = this.getWindTrend(station.readings);
+      stats.tempTrends = this.getTempTrend(station.readings);
+      stats.pressureTrends = this.getPressureTrend(station.readings);
+
+      stats.windChillString = this.getWindChill(lastReadings.temp, lastReadings.windspeed);
       stats.windDirectionString = this.getCompassDirection(lastReadings.windDirection);
       stats.tempCelsius = this.getTemp(lastReadings.temp);
       stats.tempText = this.getTempValue(lastReadings.temp);
@@ -200,13 +279,14 @@ const stationStore = {
       stats.lastPressure = this.getLastPressure(lastReadings.pressure);
       //this taking the number of code and using a case/switch statement will return text value.
       stats.codeString = this.getCodeForValue(lastReadings.code);
-      stats.code = lastReadings.code
+      stats.code = lastReadings.code;
       station.readingsToReturn = stats;
     }
 
-    console.log(station)
+    console.log(station);
     return station;
   }
+
 
 };
 
