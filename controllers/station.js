@@ -2,24 +2,24 @@
 
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
-const uuid = require('uuid');
+const uuid = require("uuid");
 
-const hbs = require('hbs');
-hbs.registerHelper('checkCode', function(codeValue, codeString){
-  if(codeString === codeString){
-    return true
+const hbs = require("hbs");
+hbs.registerHelper("checkCode", function(codeValue, codeString) {
+  if (codeString === codeString) {
+    return true;
   }
-  return false
+  return false;
 });
 
 
 const station = {
   index(request, response) {
     const stationId = request.params.id;
-    logger.debug('Station id = ', stationId);
+    logger.debug("Station id = ", stationId);
     const viewData = {
-      title: 'Station',
-      station: stationStore.getStationIdData(stationId),
+      title: "Station",
+      station: stationStore.getStationIdData(stationId)
 
     };
 
@@ -31,26 +31,29 @@ const station = {
     const readingId = request.params.readingid;
     logger.debug(`Deleting Reading ${readingId} from Station ${stationId}`);
     stationStore.removeReading(stationId, readingId);
-    response.redirect('/station/' + stationId);
+    response.redirect("/station/" + stationId);
   },
 
   addReading(request, response) {
     const stationId = request.params.id;
-    console.log(request,response,"add reading")
+    console.log(request, response, "add reading");
+    let T = new Date();
+    T.setHours(T.getHours() + 1);
     const newReading = {
       id: uuid.v1(),
       name: request.body.name,
+      date: new Date(T).toISOString().replace("T", " ").replace("Z", ""),
       code: request.body.code,
       temp: request.body.temp,
       windspeed: request.body.windspeed,
       windDirection: request.body.windDirection,
-      pressure: request.body.pressure,
+      pressure: request.body.pressure
 
     };
     logger.debug("New Reading = ", newReading);
     stationStore.addReading(stationId, newReading);
-    response.redirect('/station/' + stationId);
-  },
+    response.redirect("/station/" + stationId);
+  }
 
 };
 

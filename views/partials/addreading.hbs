@@ -1,8 +1,8 @@
-<form class="ui segment form" action="/station/{{station.id}}/addreading" method="POST">
-  <div class="three fields">
+<form class="ui inverted segment form" action="/station/{{station.id}}/addreading" method="POST">
+  <div class="five fields">
     <div class="field">
       <label>Code</label>
-      <input placeholder="00" type="text" name="code">
+      <input placeholder="000" type="text" name="code">
     </div>
     <div class="field">
       <label>Temperature</label>
@@ -12,8 +12,6 @@
       <label>Wind Speed</label>
       <input placeholder="00.00kMh" type="text" name="windspeed">
     </div>
-  </div>
-  <div class="three fields">
     <div class="field">
       <label>Wind Direction</label>
       <input placeholder="000deg" type="text" name="windDirection">
@@ -23,5 +21,9 @@
       <input placeholder="000hPa" type="text" name="pressure">
     </div>
   </div>
-  <button class="ui blue submit button"> Submit Report </button>
+  </div>
+  <br>
+  <button class="ui large blue submit button"> Submit Report</button>
+  <br>
+  <br>
 </form>

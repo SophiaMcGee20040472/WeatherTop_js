@@ -1,15 +1,12 @@
-{{> welcomemenu id="signup"}}
-
+{{> menu id = "editUser"}}
 <div class="ui two column grid basic middle aligned segment">
   <div class="column">
     <img class="ui image"
-         src="https://img.freepik.com/free-vector/avatar-profile-picture_28923-112.jpg?size=626&ext=jpg">
+         src="https://images-na.ssl-images-amazon.com/images/I/61JVy%2BSjxrL.png">
   </div>
   <div class="column">
-    <h3> Please register details below. Then proceed to Login page>>><i
-      class=" big blue hand point up outline icon"></i></h3>
-    <form class="ui stacked segment form" action="/register" method="POST">
-      <h3 class="ui header">Register</h3>
+    <h3> Edit Details >>></h3>
+    <form class="ui stacked inverted segment form" action="/updateuser" method="POST">
       <div class="two fields">
         <div class="field">
           <label>First Name</label>
@@ -26,7 +23,9 @@
       </div>
       <div class="field">
         <label>Password</label>
-        <input type="password" name="password" />
+        <input placeholder="Password" type="password" name="password" />
       </div>
-      <button class="ui blue submit button">Submit</button>
+      <button class="ui blue submit button">Update Info</button>
     </form>
+  </div>
+</div>

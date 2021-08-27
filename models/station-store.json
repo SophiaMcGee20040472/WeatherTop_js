@@ -34,7 +34,42 @@
           "date": "2021-06-25 07:20:42.138",
           "windDirection": "101"
         }
-      ]
+      ],
+      "stats": {
+        "temp": "8",
+        "code": "Snow",
+        "windspeed": "9.9",
+        "pressure": "1005",
+        "beaufort": 0,
+        "windDirection": "East South East",
+        "tempVal": 46.4,
+        "codeIcon": "700",
+        "maxTemp": 8,
+        "maxPressure": 1005,
+        "maxWind": 3.5,
+        "minWind": 1,
+        "minPressure": 1002,
+        "minTemp": 0.5
+      },
+      "readingsToReturn": {
+        "windMin": 1,
+        "windMax": 3.5,
+        "pressureMin": 1002,
+        "pressureMax": 1005,
+        "MinTemp": 0.5,
+        "MaxTemp": 8,
+        "windTrends": "arrow down",
+        "tempTrends": "arrow up",
+        "pressureTrends": "arrow up",
+        "windChillString": "9.9",
+        "windDirectionString": "East South East",
+        "tempCelsius": "8",
+        "tempText": 46.4,
+        "windForce": 0,
+        "lastPressure": "1005",
+        "codeString": "Snow",
+        "code": "700"
+      }
     },
     {
       "id": "05",
@@ -62,62 +97,40 @@
           "windDirection": "102"
         }
       ],
+      "stats": {
+        "temp": "0.5",
+        "code": "Thunder",
+        "windspeed": "-0.2",
+        "pressure": "1000",
+        "beaufort": 1,
+        "windDirection": "East South East",
+        "tempVal": 32.9,
+        "codeIcon": "800",
+        "maxTemp": 8,
+        "maxPressure": 1000,
+        "maxWind": 3.5,
+        "minWind": 1,
+        "minPressure": 999,
+        "minTemp": 0.5
+      },
       "readingsToReturn": {
-        "windMin": 1,
+        "windMin": 0,
         "windMax": 3.5,
-        "pressureMin": 999,
+        "pressureMin": 0,
         "pressureMax": 1000,
-        "MinTemp": 0.5,
+        "MinTemp": 0,
         "MaxTemp": 8,
-        "windChillString": "-0.2",
-        "windDirectionString": "East South East",
-        "tempCelsius": "0.5",
-        "tempText": 32.9,
-        "windForce": 1,
-        "lastPressure": "1000",
-        "codeString": "Thunder",
-        "code": "800"
-      }
-    },
-    {
-      "id": "e8d0e950-f074-11eb-9303-eb6134eea600",
-      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "name": "SpringField",
-      "lat": "500",
-      "lng": "400",
-      "readings": [
-        {
-          "id": "f4422420-f074-11eb-9303-eb6134eea600",
-          "code": "500",
-          "temp": "40",
-          "windspeed": "200",
-          "windDirection": "40",
-          "pressure": "6"
-        },
-        {
-          "id": "14ae4fe0-f075-11eb-9303-eb6134eea600",
-          "code": "200",
-          "temp": "40",
-          "windspeed": "20",
-          "windDirection": "400",
-          "pressure": "6"
-        }
-      ],
-      "readingsToReturn": {
-        "windMin": 20,
-        "windMax": 200,
-        "pressureMin": 6,
-        "pressureMax": 300,
-        "MinTemp": 40,
-        "MaxTemp": 40,
-        "windChillString": "45.2",
+        "windTrends": "Steady",
+        "tempTrends": "arrow down",
+        "pressureTrends": "arrow down",
+        "windChillString": "13.1",
         "windDirectionString": "North",
-        "tempCelsius": "40",
-        "tempText": 104,
-        "windForce": 4,
-        "lastPressure": "6",
-        "codeString": "Partial Clouds",
-        "code": "200"
+        "tempCelsius": "",
+        "tempText": 32,
+        "windForce": 0,
+        "lastPressure": "",
+        "codeString": "Clear",
+        "code": "100"
       }
     }
   ]
