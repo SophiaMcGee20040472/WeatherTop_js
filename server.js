@@ -18,7 +18,7 @@ app.engine(
     extname: ".hbs",
     defaultLayout: "main",
     helpers: {
-      checkCode: function(code) {
+      checkCode(code) {
         console.log(code);
         if (code === "100") {
           return "right floated big red sun icon";
@@ -37,23 +37,22 @@ app.engine(
         } else if (code === "800") {
           return "right floated big yellow bolt icon";
         } else {
-          return "right floated big red sun icon";
+          return "right floated big pink sun rain cloud icon";
         }
       }
     }
   })
-),
+);
 
-  app.set("view engine", "hbs");
+app.set("view engine", "hbs");
 
 const hbs = require("hbs");
-hbs.registerHelper("checkCode", function(codeValue, codeString) {
+hbs.registerHelper("checkCode", function(code, codeString) {
   if (codeString === codeString) {
     return true;
   }
   return false;
 });
-
 
 const routes = require("./routes");
 app.use("/", routes);

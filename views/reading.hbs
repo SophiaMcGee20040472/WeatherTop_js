@@ -1,0 +1,50 @@
+{{> menu}}
+
+<section class="ui inverted grey segment">
+<br>
+<div class="ui circular small images">
+  <img class="ui image"
+       src="https://i.pinimg.com/originals/8e/07/0a/8e070a112dcf30f94f49cedcc8070ee7.gif" alt="">
+  <img class="ui image"
+       src="https://cdn.dribbble.com/users/1429491/screenshots/4323471/1dr.gif" alt="">
+  <img class="ui image"
+       src="https://i.pinimg.com/originals/d5/0f/fe/d50ffe41a986e3db529f16dccb1a4040.gif" alt="">
+  <img class="ui image"
+       src="https://i.pinimg.com/originals/8e/07/0a/8e070a112dcf30f94f49cedcc8070ee7.gif" alt="">
+  <img class="ui image"
+       src="https://cdn.dribbble.com/users/1429491/screenshots/4323471/1dr.gif" alt="">
+  <img class="ui image"
+       src="https://i.pinimg.com/originals/d5/0f/fe/d50ffe41a986e3db529f16dccb1a4040.gif" alt="">
+  <img class="ui image"
+       src="https://i.pinimg.com/originals/8e/07/0a/8e070a112dcf30f94f49cedcc8070ee7.gif" alt="">
+</div>
+<br>
+<form class="ui stacked inverted segment form" action="/reading/{{station.id}}/updatedreading/{{reading.id}}" method="POST">
+  <div class="two fields">
+    <div class="field">
+      <label>Code</label>
+      <input placeholder="Code" type="text" name="code" value= {{reading.code}}>
+    </div>
+    <div class="field">
+      <label>Temperature</label>
+      <input placeholder="Temperature" type="text" name="temp" value= {{reading.temp}}>
+    </div>
+    <div class="field">
+      <label>Wind Speed</label>
+      <input placeholder ="WindSpeed" type="text" name="windSpeed" value= {{reading.windspeed}}>
+    </div>
+    <div class="field">
+      <label>Wind Direction</label>
+      <input placeholder="Wind Direction" type="text" name="windDirection" value= {{reading.windDirection}}>
+    </div>
+    <div class="field">
+      <label>Pressure </label>
+      <input placeholder="Pressure" type="text" name="pressure" value= {{reading.pressure}}>
+    </div>
+    </div>
+  </div>
+  <button class="ui blue submit button"> Edit Reading </button>
+    </div>
+  </div>
+</form>
+</section>

@@ -1,18 +1,21 @@
-{{#each stations}}
-
-  <section class="ui stacked segment">
-    <h2 class="ui header">
-      {{name}}
-    </h2>
+{{#each station}}
+  <section class="ui inverted grey segment">
+    <h2><i>{{name}} Station</i></h2>
     <div class="ui five column grid">
       <div class="column">
         <div class="ui inverted cards">
           <div class="card">
             <div class="content">
-              {{#each readings}}
-                <div class="header">{{name}}</div>
-              {{/each}}
+              <div class="header">{{name}} <i class="right floated big purple map marker icon"></i>
+              </div>
               <div class="description">
+                <div>
+                  Lat : {{lat}}
+                  <br>
+                  Lng : {{lng}}
+                </div>
+                <br>
+                <br>
                 <br>
                 <br>
               </div>
@@ -24,11 +27,15 @@
         <div class="ui inverted cards">
           <div class="card">
             <div class="content">
-              <div class="header"> Code</div>
+              <div class="header"> Weather
+                <i class='{{#checkCode stats.codeIcon}}{{/checkCode}}'></i>
+              </div>
               <div class="description">
-                {{#each readings}}
-                  {{code}}
-                {{/each}}
+                {{stats.code}}
+                <br>
+                <br>
+                <br>
+                <br>
                 <br>
                 <br>
               </div>
@@ -40,25 +47,19 @@
         <div class="ui inverted cards">
           <div class="card">
             <div class="content">
-              <div class="header">Temp</div>
+              <div class="header">Temp <i class="right floated big temperature big blue low icon"></i></div>
               <div class="description">
-                {{#each readings}}
-                  {{temp}}
-                {{/each}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui inverted cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">Wind</div>
-              <div class="description">
-                {{#each readings}}
-                  {{windspeed}}
-                {{/each}}
+                {{stats.temp}} C
+                <br>
+                {{stats.tempVal}} F
+                <br>
+                Max :
+                {{stats.maxTemp}} C
+                <br>
+                Min :
+                {{stats.minTemp}}
+                C
+                <br>
                 <br>
                 <br>
               </div>
@@ -70,11 +71,37 @@
         <div class="ui inverted cards">
           <div class="card">
             <div class="content">
-              <div class="header">Pressure</div>
+              <div class="header">Wind <i class=" right floated big wind large green icon"></i></div>
               <div class="description">
-                {{#each readings}}
-                  {{pressure}}hp
-                {{/each}}
+                {{stats.beaufort}} bft
+                <br>
+                {{stats.windDirection}}
+                <br>
+                Feels like
+                <br>
+                {{stats.windspeed}}
+                <br> Max :{{stats.maxWind}}
+                <br>
+                Min : {{stats.minWind}}
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui inverted cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">Pressure <i class="right floated big dark orange sun outline icon"></i></div>
+              <div class="description">
+                {{stats.pressure}} hpa
+                <br>
+                Max : {{stats.maxPressure}} hpa
+                <br>
+                Min : {{stats.minPressure}} hpa
+                <br>
+                <br>
                 <br>
                 <br>
               </div>
@@ -83,6 +110,13 @@
         </div>
       </div>
     </div>
+    <br>
+    <a href="/station/{{id}}" class="ui inverted icon button">
+      <i class="icon white folder open"></i>
+    </a>
+    <a href="/dashboard/deletestation/{{id}}" class="ui red icon button">
+      <i class="icon trash"></i>
+    </a>
   </section>
 {{/each}}
-
+</section>

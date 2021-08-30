@@ -1,41 +1,202 @@
-<table class="ui inverted grey celled table">
-  <thead>
-  <tr>
-    <th>Date</th>
-    <th>Code</th>
-    <th>Temp</th>
-    <th>Wind Speed</th>
-    <th>Wind Direction</th>
-    <th>Pressure</th>
-    <th>Remove</th>
-  </tr>
-  </thead>
-  <tbody>
-  {{#each station.readings}}
+<section class="ui inverted grey segment">
+  <h2 class="ui purple header">
+    WeatherTop Station
+  </h2>
+  <div class="ui five column grid">
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">{{station.name}} <i class="right floated big purple map marker icon"></i>
+            </div>
+            <div class="description">
+              <div>
+                Lat : {{station.lat}}
+                <br>
+                Lng : {{station.lng}}
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <h3 class="header"> Weather
+              <i class='{{#checkCode station.readingsToReturn.code}}{{/checkCode}}'></i>
+            </h3>
+            <div class="description">
+              {{#each station}}
+                {{codeString}}
+              {{/each}}
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Temp <i class="right floated temperature big blue low icon"></i></div>
+            <div class="header">{{#each station}}
+              <i class="right floated blue {{tempTrends}} icon"></i>
+            {{/each}}</div>
+            <div class="description">
+              {{#each station}}
+                {{tempCelsius}}
+              {{/each}} C
+              <br>
+              {{#each station}}
+                {{tempText}}
+              {{/each}}F
+              <br>
+              Max :
+              {{#each station}}
+                {{MaxTemp}}
+              {{/each}}C
+              <br>
+              Min :
+              {{#each station}}
+                {{MinTemp}}
+              {{/each}}C
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Wind <i class="right floated wind big green icon"></i></div>
+            <div class="header">{{#each station}}
+              <i class="right floated green {{windTrends}} icon"></i>
+            {{/each}}</div>
+            <div class="description">
+              {{#each station}}
+                {{windForce}}
+              {{/each}}bft
+              <br>
+              {{#each station}}
+                {{windDirectionString}}
+              {{/each}}
+              <br>
+              Feels like
+              <br>
+              {{#each station}}
+                {{windChillString}}
+              {{/each}}
+              <br>
+              Max :
+              {{#each station}}
+                {{windMax}}
+              {{/each}}
+              <br>
+              Min :
+              {{#each station}}
+                {{windMin}}
+              {{/each}}
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui inverted cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">Pressure <i class="right floated big dark orange sun outline icon"></i></div>
+            <div class="header">{{#each station}}
+              <i class="right floated orange {{pressureTrends}} icon"></i>
+            {{/each}}</div>
+            <div class="description">
+              {{#each station}}
+                {{lastPressure}}
+              {{/each}}hpa
+              <br>
+              Max :
+              {{#each station}}
+                {{pressureMax}}
+              {{/each}}
+              <br>
+              Min :
+              {{#each station}}
+                {{pressureMin}}
+              {{/each}}
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="ui inverted grey celled table">
+    <thead>
     <tr>
-      <td>
-        {{date}}
-      </td>
-      <td>
-        {{code}}
-      </td>
-      <td>
-        {{temp}}
-      </td>
-      <td>
-        {{windspeed}}
-      </td>
-      <td>
-        {{windDirection}}
-      </td>
-      <td>
-        {{pressure}}
-      </td>
-      <td>
-        <a href="/station/{{../station.id}}/deletereading/{{id}}" class="ui red icon button">
-          <i class="icon trash"></i></a>
-      </td>
+      <th>Date/Time</th>
+      <th>Code</th>
+      <th>Temp</th>
+      <th>Wind Speed</th>
+      <th>Wind Direction</th>
+      <th>Pressure</th>
+      <th>Edit</th>
+      <th>Remove</th>
     </tr>
-  {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    {{#each station.readings}}
+      <tr>
+        <td>
+          {{date}}
+        </td>
+        <td>
+          {{code}}
+        </td>
+        <td>
+          {{temp}}
+        </td>
+        <td>
+          {{windspeed}}
+        </td>
+        <td>
+          {{windDirection}}
+        </td>
+        <td>
+          {{pressure}}
+        </td>
+        <td>
+          <a href="/reading/{{../station.id}}/editreading/{{id}}" class="ui yellow icon button">
+            <i class="pencil alternate icon"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/station/{{../station.id}}/deletereading/{{id}}" class="ui red icon button">
+            <i class="icon trash"></i></a>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</section>
