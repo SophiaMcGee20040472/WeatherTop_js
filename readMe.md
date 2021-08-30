@@ -37,3 +37,12 @@ https://stackoverflow.com/questions/23329190/how-to-add-5-hours-30-minutes-to-ti
 
 https://stackoverflow.com/questions/7889006/sorting-arrays-in-javascript-by-object-key-value/7889040
 
+https://medium.com/frapp%C3%A9-thoughts/so-we-decided-to-create-our-own-charts-a95cb5032c97
+
+https://openweathermap.org/
+
+https://frappe.io/charts
+
+https://leafletsjs.com/
+
+
