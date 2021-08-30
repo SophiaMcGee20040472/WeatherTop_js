@@ -204,7 +204,7 @@ const stationStore = {
       if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)){
         windTrend = "arrow up"
 
-      } else if ((thirdTrend > secondTrend) &&(secondTrend <thirdTrend)){
+      } else if ((firstTrend < secondTrend) &&(secondTrend <thirdTrend)){
         windTrend = "arrow down"
 
       } else {
@@ -227,7 +227,7 @@ const stationStore = {
       if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)){
         tempTrend = "arrow up"
 
-      } else if ((thirdTrend > secondTrend) &&(secondTrend <thirdTrend)){
+      } else if ((firstTrend < secondTrend) &&(secondTrend <thirdTrend)){
         tempTrend = "arrow down"
 
       } else {
@@ -249,7 +249,7 @@ const stationStore = {
       if ((firstTrend > secondTrend) && (secondTrend > thirdTrend)){
         pressureTrend = "arrow up"
 
-      } else if ((thirdTrend > secondTrend) &&(secondTrend <thirdTrend)){
+      } else if ((firstTrend < secondTrend) &&(secondTrend <thirdTrend)){
         pressureTrend = "arrow down"
 
       } else {
