@@ -35,22 +35,6 @@
           "windDirection": "101"
         }
       ],
-      "stats": {
-        "temp": "8",
-        "code": "Snow",
-        "windspeed": "9.9",
-        "pressure": "1005",
-        "beaufort": 0,
-        "windDirection": "East South East",
-        "tempVal": 46.4,
-        "codeIcon": "700",
-        "maxTemp": 8,
-        "maxPressure": 1005,
-        "maxWind": 3.5,
-        "minWind": 1,
-        "minPressure": 1002,
-        "minTemp": 0.5
-      },
       "readingsToReturn": {
         "windMin": 1,
         "windMax": 3.5,
@@ -69,6 +53,22 @@
         "lastPressure": "1005",
         "codeString": "Snow",
         "code": "700"
+      },
+      "stats": {
+        "temp": "8",
+        "code": "Snow",
+        "windspeed": "9.9",
+        "pressure": "1005",
+        "beaufort": 0,
+        "windDirection": "East South East",
+        "tempVal": 46.4,
+        "codeIcon": "700",
+        "maxTemp": 8,
+        "maxPressure": 1005,
+        "maxWind": 3.5,
+        "minWind": 1,
+        "minPressure": 1002,
+        "minTemp": 0.5
       }
     },
     {
@@ -106,31 +106,30 @@
         "windDirection": "East South East",
         "tempVal": 32.9,
         "codeIcon": "800",
-        "maxTemp": 8,
-        "maxPressure": 1000,
-        "maxWind": 3.5,
+        "maxTemp": 16.77,
+        "maxPressure": 1029,
+        "maxWind": 4.12,
         "minWind": 1,
         "minPressure": 999,
         "minTemp": 0.5
       },
       "readingsToReturn": {
-        "windMin": 0,
-        "windMax": 3.5,
-        "pressureMin": 0,
-        "pressureMax": 1000,
-        "MinTemp": 0,
-        "MaxTemp": 8,
-        "windTrends": "Steady",
+        "windMin": 1,
+        "windMax": 4.12,
+        "pressureMin": 999,
+        "pressureMax": 1029,
+        "MinTemp": 0.5,
+        "MaxTemp": 16.89,
+        "windTrends": "arrow up",
         "tempTrends": "arrow down",
         "pressureTrends": "arrow down",
-        "windChillString": "13.1",
-        "windDirectionString": "North",
-        "tempCelsius": "",
-        "tempText": 32,
-        "windForce": 0,
-        "lastPressure": "",
-        "codeString": "Clear",
-        "code": "100"
+        "windChillString": "17.8",
+        "windDirectionString": "East South East",
+        "tempCelsius": 16.89,
+        "tempText": 62.402,
+        "windForce": 1,
+        "lastPressure": 1029,
+        "code": 803
       }
     }
   ]

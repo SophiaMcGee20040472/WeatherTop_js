@@ -32,6 +32,14 @@ const accounts = {
     response.render("signup", viewData);
   },
 
+  register(request, response) {
+    const user = request.body;
+    user.id = uuid.v1();
+    userstore.addUser(user);
+    logger.info(`registering ${user.email}`);
+    response.redirect("/");
+  },
+
   settings(request, response) {
     const user = accounts.getCurrentUser(request);
     response.render("editUser", user);
@@ -49,17 +57,8 @@ const accounts = {
     response.redirect("login");
   },
 
-  register(request, response) {
-    const user = request.body;
-    user.id = uuid.v1();
-    userstore.addUser(user);
-    logger.info(`registering ${user.email}`);
-    response.redirect("/");
-  },
-
   authenticate(request, response) {
     const user = userstore.getUserByEmail(request.body.email);
-    //if statement assuring password is equal to password entered
     if (request.body.password === user.password) {
       response.cookie("station", user.email);
       logger.info(`logging in ${user.email}`);
