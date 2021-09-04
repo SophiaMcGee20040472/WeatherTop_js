@@ -46,7 +46,7 @@ const station = {
         report.pressureTrend.push(trends[i].pressure);
         report.windTrend.push(trends[i].wind_speed);
         report.windDirectionTrend.push(trends[i].wind_deg);
-        const date = new Date(trends[i].dt * 1000);
+        const date = new Date(trends[i].dt * 1001.9);
         report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
 
       }
