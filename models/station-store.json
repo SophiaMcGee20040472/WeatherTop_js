@@ -36,23 +36,23 @@
         }
       ],
       "readingsToReturn": {
-        "windMin": 1,
+        "windMin": 0.45,
         "windMax": 3.5,
         "pressureMin": 1002,
-        "pressureMax": 1005,
+        "pressureMax": 1016,
         "MinTemp": 0.5,
-        "MaxTemp": 8,
+        "MaxTemp": 16.27,
         "windTrends": "arrow down",
         "tempTrends": "arrow up",
         "pressureTrends": "arrow up",
-        "windChillString": "9.9",
+        "windChillString": "18.9",
         "windDirectionString": "East South East",
-        "tempCelsius": "8",
-        "tempText": 46.4,
+        "tempCelsius": 16.27,
+        "tempText": 61.286,
         "windForce": 0,
-        "lastPressure": "1005",
-        "codeString": "Snow",
-        "code": "700"
+        "lastPressure": 1016,
+        "codeString": "Sun Shower",
+        "code": 803
       },
       "stats": {
         "temp": "8",
@@ -95,31 +95,22 @@
           "pressure": "1000",
           "date": "2021-03-25 07:20:42.138",
           "windDirection": "102"
-        },
-        {
-          "id": "d4d61bb0-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:06:58.539",
-          "code": "100",
-          "temp": "-5",
-          "windspeed": "5",
-          "windDirection": "102",
-          "pressure": "1001"
         }
       ],
       "stats": {
-        "temp": "500",
-        "code": "Heavy Showers",
-        "windspeed": "714.3",
-        "pressure": "300",
-        "beaufort": 10,
-        "windDirection": "North",
-        "tempVal": 932,
-        "codeIcon": "500",
-        "maxTemp": 500,
-        "maxPressure": 1000,
-        "maxWind": 100,
+        "temp": "0.5",
+        "code": "Thunder",
+        "windspeed": "-0.2",
+        "pressure": "1000",
+        "beaufort": 1,
+        "windDirection": "East South East",
+        "tempVal": 32.9,
+        "codeIcon": "800",
+        "maxTemp": 16.35,
+        "maxPressure": 1023,
+        "maxWind": 3.5,
         "minWind": 1,
-        "minPressure": 300,
+        "minPressure": 999,
         "minTemp": 0.5
       },
       "readingsToReturn": {
@@ -137,79 +128,6 @@
         "lastPressure": "1000",
         "codeString": "Thunder",
         "code": "800"
-      }
-    },
-    {
-      "id": "61bf37b0-09cd-11ec-9d60-839512cd5b55",
-      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "name": "Tipperary",
-      "lat": "52.4747",
-      "lng": "-8.1544",
-      "readings": [
-        {
-          "id": "67a0a650-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:03:54.996",
-          "code": 803,
-          "temp": 15.57,
-          "windspeed": 2.86,
-          "pressure": 1030,
-          "windDirection": 46
-        },
-        {
-          "id": "6a1d6620-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:03:59.419",
-          "code": 803,
-          "temp": 15.57,
-          "windspeed": 2.86,
-          "pressure": 1030,
-          "windDirection": 46
-        },
-        {
-          "id": "6c85b390-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:04:03.485",
-          "code": 803,
-          "temp": 15.57,
-          "windspeed": 2.86,
-          "pressure": 1030,
-          "windDirection": 46
-        },
-        {
-          "id": "760aaec0-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:04:19.500",
-          "code": "700",
-          "temp": "500",
-          "windspeed": "200",
-          "windDirection": "40",
-          "pressure": "300"
-        },
-        {
-          "id": "83997260-09cd-11ec-9d60-839512cd5b55",
-          "date": "2021-08-30 21:04:42.246",
-          "code": "100",
-          "temp": "5",
-          "windspeed": "2",
-          "windDirection": "1",
-          "pressure": "9"
-        }
-      ],
-      "readingsToReturn": {
-        "windMin": 2,
-        "windMax": 200,
-        "pressureMin": 9,
-        "pressureMax": 1030,
-        "MinTemp": 5,
-        "MaxTemp": 500,
-        "windTrends": "Steady",
-        "tempTrends": "Steady",
-        "pressureTrends": "Steady",
-        "windChillString": "5.7",
-        "windDirectionString": "North",
-        "tempCelsius": "5",
-        "tempText": 41,
-        "windForce": 1,
-        "lastPressure": "9",
-        "codeString": "Clear",
-        "code": "100"
       }
     }
   ]

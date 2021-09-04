@@ -96,6 +96,9 @@ const stationStore = {
       case "800":
         newCode = "Thunder";
         break;
+        default : ""
+        newCode = "Sun Shower"
+        break;
 
     }
     return newCode;
